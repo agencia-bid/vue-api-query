@@ -1,5 +1,6 @@
 import Builder from './Builder';
 import StaticModel from './StaticModel';
+import pluralize from 'pluralize';
 
 export default class Model extends StaticModel {
 
@@ -34,7 +35,7 @@ export default class Model extends StaticModel {
   }
 
   resource() {
-    return `${this.constructor.name.toLowerCase()}s`
+    return pluralize.plural(`${this.constructor.name.toLowerCase()}`)
   }
 
   primaryKey() {
