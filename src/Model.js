@@ -35,7 +35,10 @@ export default class Model extends StaticModel {
   }
 
   resource() {
-    return pluralize.plural(`${this.constructor.name.toLowerCase()}`)
+    return pluralize.plural(this.constructor.name)
+        .replace(/([a-z])([A-Z])/g, "$1-$2")
+        .replace(/\s+/g, '-')
+        .toLowerCase()
   }
 
   primaryKey() {
